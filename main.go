@@ -14,6 +14,11 @@ const InboxId = "943367551"
 const ApiUrl = "https://api.todoist.com/rest/v1"
 
 func main() {
+	apiToken := os.Getenv("TODOIST_API_TOKEN")
+	if apiToken == "" {
+		log.Fatal("API Token required")
+	}
+
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Task name: ")
 
@@ -34,7 +39,7 @@ func main() {
 		log.Fatal(e)
 	}
 
-	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", ApiToken))
+	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", apiToken))
 	req.Header.Add("Content-Type", "application/json")
 
 	client := &http.Client{}
