@@ -19,9 +19,9 @@ func main() {
 		log.Fatal("API Token required")
 	}
 
-	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Task name: ")
 
+	reader := bufio.NewReader(os.Stdin)
 	input, e := reader.ReadString('\n')
 	if e != nil {
 		log.Fatal(e)
